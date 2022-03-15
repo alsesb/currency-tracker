@@ -1,11 +1,13 @@
 from concurrent.futures import ThreadPoolExecutor
 import os
 import sys
+from ConfigLoader import load_env
 
 from ExchangeCommunication import ExchangeCommunicator
 from UserFunctions import get_currency_to_watch, get_user_action
 
 # GLOBAL VARIABLES
+load_env()
 MAXIMUM_WATCHERS = int(os.environ["THREAD_POOL"])
 WATCHING_FOR = []
 EXECUTOR = ThreadPoolExecutor(max_workers=MAXIMUM_WATCHERS, thread_name_prefix="CURRENCY_LISTENER")
